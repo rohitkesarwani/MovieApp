@@ -5,14 +5,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.movieapp.navigation.screen.Screen
+import com.example.movieapp.presentation.screen.Settings.Settings
 import com.example.movieapp.presentation.screen.downloads.Downloads
-import com.example.movieapp.presentation.screen.downloads.DownloadsViewModel
 import com.example.movieapp.presentation.screen.home.Home
-import com.example.movieapp.presentation.screen.home.HomeViewModel
 import com.example.movieapp.presentation.screen.profile.Profile
-import com.example.movieapp.presentation.screen.profile.ProfileViewModel
 import com.example.movieapp.presentation.screen.search.Search
-import com.example.movieapp.presentation.screen.search.SearchViewModel
 
 @Composable
 fun MainNavGraph(navHostController: NavHostController) {
@@ -24,11 +21,16 @@ fun MainNavGraph(navHostController: NavHostController) {
         composable(route=Screen.Search.route){
             Search(navHostController)
         }
+
         composable(route=Screen.Downloads.route){
             Downloads(navHostController)
         }
         composable(route=Screen.Profile.route){
             Profile(navHostController)
+        }
+
+        composable(route=Screen.Settings.route){
+            Settings(navHostController)
         }
 
     }

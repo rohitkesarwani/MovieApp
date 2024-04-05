@@ -8,5 +8,4 @@ import com.example.movieapp.presentation.component.Wip
 @Composable
 fun Profile(navHostController: NavHostController, downloadsViewModel: ProfileViewModel= hiltViewModel()) {
     Wip()
-
 }

@@ -3,7 +3,8 @@
 /build/intermediates
 /build/snapshot
 /build/tmp
-!/build/outputs
-!/build/outputs/apk
+/build/outputs/logs
 !/build/outputs/apk/debug
 !/build/outputs/apk/debug/.*apk
+*.jks
+ /build/outputs/apk/androidTest

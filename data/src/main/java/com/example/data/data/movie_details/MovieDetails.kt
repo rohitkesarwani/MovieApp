@@ -1,6 +1,7 @@
 package com.example.data.data.movie_details
 
 
+import android.util.Log
 import com.google.gson.annotations.SerializedName
 
 data class MovieDetails(
@@ -59,6 +60,7 @@ data class MovieDetails(
 )
 
 fun MovieDetails.toDomainMovieDetails():com.example.domain.data.movie_details.MovieDetails{
+    Log.e("data youtube",this.videos?.results?.isNotEmpty().toString())
     return com.example.domain.data.movie_details.MovieDetails(
         title=this.title.toString(),
         description = this.overview.toString(),

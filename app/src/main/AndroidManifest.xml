@@ -37,7 +37,7 @@
         <activity
             android:name=".presentation.screen.main.MainActivity"
             android:exported="false"
-            android:launchMode="singleInstance"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.MovieApp" />
     </application>
 

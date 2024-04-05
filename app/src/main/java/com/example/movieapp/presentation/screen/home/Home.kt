@@ -120,7 +120,7 @@ fun Home(navController: NavController,homeViewModel:HomeViewModel = hiltViewMode
                         .clip(RoundedCornerShape(CLPM))
                         .background(BlackGrey80)
                         .padding(PDNGM)
-                        .clickable { navController.navigate(Screen.Search.route){
+                        .clickable { navController.navigate(Screen.Settings.route){
                             popUpTo(Screen.Home.route)
                             launchSingleTop=true
                         } })
