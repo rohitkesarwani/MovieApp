@@ -29,22 +29,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             MovieAppTheme {
                 val navController = rememberNavController()
-                val homeViewModel:HomeViewModel = hiltViewModel()
-                val searchViewModel:SearchViewModel = hiltViewModel()
-                val downloadsViewModel:DownloadsViewModel = hiltViewModel()
-                val profileViewModel:ProfileViewModel = hiltViewModel()
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize()
                 ) {
                     Scaffold(bottomBar ={
                         MABtmAppBar(navController)
                     } ) {it->
-                        MainNavGraph(navHostController = navController, homeViewModel = homeViewModel,
-                            searchViewModel=searchViewModel,
-                            downloadsViewModel=downloadsViewModel,
-                            profileViewModel=profileViewModel)
+                        MainNavGraph(navHostController = navController)
                     }
                 }
             }

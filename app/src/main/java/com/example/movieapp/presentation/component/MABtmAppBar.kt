@@ -10,9 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.movieapp.R
 import com.example.movieapp.navigation.screen.BottomNavItem
 import com.example.movieapp.navigation.screen.Screen
 import com.example.movieapp.presentation.ui.theme.BlackGrey80
@@ -25,26 +28,29 @@ fun MABtmAppBar(navController: NavController) {
     val navigationItems = listOf(BottomNavItem.Home(context),
         BottomNavItem.Search(context),
         BottomNavItem.Downloads(context),
-        BottomNavItem.Profile(context))
+        BottomNavItem.Settings(context))
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val bottomBarDestination = navigationItems.any { it.route == currentRoute }
 
     if(bottomBarDestination)
-    Row(modifier = Modifier.fillMaxWidth()
-        .padding(PDNGM)
-        .clip(RoundedCornerShape(CLPM))
-        .background(BlackGrey80)
-        .padding(PDNGM), horizontalArrangement = Arrangement.SpaceBetween) {
-        navigationItems.forEach {
-            BottomBarItem(icon = it.icon, title = it.title,
-                currentRoute==it.route,
-                onClick = {
-                    navController.navigate(it.route){
-                        popUpTo(Screen.Home.route)
-                        launchSingleTop = true
-                    }
-                },modifier=Modifier)
+        Row(modifier = Modifier.fillMaxWidth()
+            .padding(PDNGM)
+            .clip(RoundedCornerShape(CLPM))
+            .background(BlackGrey80)
+            .padding(PDNGM), horizontalArrangement = Arrangement.SpaceBetween) {
+            navigationItems.forEach {
+                var icon = it.icon
+                if(it.title.lowercase().equals("downloads"))
+                    icon=ImageVector.vectorResource(R.drawable.baseline_arrow_circle_down_24)
+                BottomBarItem(icon = icon, title = it.title,
+                    currentRoute==it.route,
+                    onClick = {
+                        navController.navigate(it.route){
+                            popUpTo(Screen.Home.route)
+                            launchSingleTop = true
+                        }
+                    },modifier=Modifier)
+            }
         }
-    }
 }

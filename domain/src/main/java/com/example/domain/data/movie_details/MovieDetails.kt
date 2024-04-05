@@ -3,7 +3,8 @@ package com.example.domain.data.movie_details
 data class MovieDetails(
     val title:String,
     val year:String,
-    val duration:String,
-    val safe:String,
+    val duration: Int,
+    val safe: Boolean,
     val description:String,
-    val youtubeKey:String)
+    val youtubeKey:String,
+    val posterImg:String="")

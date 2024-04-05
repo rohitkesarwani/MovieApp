@@ -66,7 +66,17 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+    annotationProcessor(libs.dagger.hilt.compiler)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.exoplayer.dash)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.youtubeplayer.compose)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.compose.shimmer)
 
+    implementation(libs.coil.gif)
+
+    implementation(libs.lottie.compose)
 
 
 
@@ -80,6 +90,10 @@ dependencies {
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation(libs.androidx.room.ktx)
+
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data")))
+    implementation(project(mapOf("path" to ":common")))
 
 
 

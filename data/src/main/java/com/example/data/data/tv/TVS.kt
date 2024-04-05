@@ -1,7 +1,7 @@
 package com.example.data.data.tv
 
 
-import com.example.domain.data.tv.TV
+import com.example.domain.data.series.Series
 import com.google.gson.annotations.SerializedName
 
 data class TVS(
@@ -15,8 +15,8 @@ data class TVS(
     val totalResults: Int
 )
 
-fun TVS.toDomainTV(): ArrayList<TV> {
-    val series = ArrayList<TV>()
-    results.forEach { series.add(TV(it.id,it.posterPath)) }
+fun TVS.toDomainTV(): ArrayList<Series> {
+    val series = ArrayList<Series>()
+    results.forEach { series.add(Series(it.id,it.posterPath)) }
     return series
 }

@@ -1,73 +1,87 @@
 package com.example.data.data.series_details
 
 
+import com.example.data.data.movie_details.MovieDetails
 import com.google.gson.annotations.SerializedName
 
 data class SeriesDetails(
     @SerializedName("adult")
-    val adult: Boolean,
+    val adult: Boolean?,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerializedName("created_by")
-    val createdBy: List<Any>,
+    val createdBy: List<Any?>?,
     @SerializedName("episode_run_time")
-    val episodeRunTime: List<Int>,
+    val episodeRunTime: List<Int?>?,
     @SerializedName("first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: String?,
     @SerializedName("genres")
-    val genres: List<Genre>,
+    val genres: List<Genre?>?,
     @SerializedName("homepage")
-    val homepage: String,
+    val homepage: String?,
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("in_production")
-    val inProduction: Boolean,
+    val inProduction: Boolean?,
     @SerializedName("languages")
-    val languages: List<String>,
+    val languages: List<String?>?,
     @SerializedName("last_air_date")
-    val lastAirDate: String,
+    val lastAirDate: String?,
     @SerializedName("last_episode_to_air")
-    val lastEpisodeToAir: LastEpisodeToAir,
+    val lastEpisodeToAir: LastEpisodeToAir?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("networks")
-    val networks: List<Network>,
+    val networks: List<Network?>?,
     @SerializedName("next_episode_to_air")
-    val nextEpisodeToAir: NextEpisodeToAir,
+    val nextEpisodeToAir: NextEpisodeToAir?,
     @SerializedName("number_of_episodes")
-    val numberOfEpisodes: Int,
+    val numberOfEpisodes: Int?,
     @SerializedName("number_of_seasons")
-    val numberOfSeasons: Int,
+    val numberOfSeasons: Int?,
     @SerializedName("origin_country")
-    val originCountry: List<String>,
+    val originCountry: List<String?>?,
     @SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String?,
     @SerializedName("original_name")
-    val originalName: String,
+    val originalName: String?,
     @SerializedName("overview")
-    val overview: String,
+    val overview: String?,
     @SerializedName("popularity")
-    val popularity: Double,
+    val popularity: Double?,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @SerializedName("production_companies")
-    val productionCompanies: List<ProductionCompany>,
+    val productionCompanies: List<ProductionCompany?>?,
     @SerializedName("production_countries")
-    val productionCountries: List<ProductionCountry>,
+    val productionCountries: List<ProductionCountry?>?,
     @SerializedName("seasons")
-    val seasons: List<Season>,
+    val seasons: List<Season?>?,
     @SerializedName("spoken_languages")
-    val spokenLanguages: List<SpokenLanguage>,
+    val spokenLanguages: List<SpokenLanguage?>?,
     @SerializedName("status")
-    val status: String,
+    val status: String?,
     @SerializedName("tagline")
-    val tagline: String,
+    val tagline: String?,
     @SerializedName("type")
-    val type: String,
+    val type: String?,
     @SerializedName("videos")
-    val videos: Videos,
+    val videos: Videos?,
     @SerializedName("vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double?,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int?
 )
+
+
+fun SeriesDetails.toDomainSeriesDetails():com.example.domain.data.series_details.SeriesDetails{
+    return com.example.domain.data.series_details.SeriesDetails(
+        title=this.name.toString(),
+        description = this.overview.toString(),
+        year = this.firstAirDate.toString(),
+        duration = if(episodeRunTime?.isNotEmpty() == true) episodeRunTime[0]?:0 else 0,
+        safe = !(this.adult?:false),
+        youtubeKey = (if(this.videos?.results?.isNotEmpty() == true) this.videos.results.get(0)?.key else "").toString(),
+        posterImg = this.posterPath.toString()
+    )
+}

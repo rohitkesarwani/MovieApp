@@ -15,25 +15,20 @@ import com.example.movieapp.presentation.screen.search.Search
 import com.example.movieapp.presentation.screen.search.SearchViewModel
 
 @Composable
-fun MainNavGraph(navHostController: NavHostController,
-                 homeViewModel: HomeViewModel,
-                 searchViewModel:SearchViewModel,
-                 downloadsViewModel:DownloadsViewModel,
-                 profileViewModel:ProfileViewModel
-                 ) {
+fun MainNavGraph(navHostController: NavHostController) {
     NavHost(navController = navHostController, startDestination = Screen.Home.route)
     {
         composable(route=Screen.Home.route){
-            Home(navHostController,homeViewModel)
+            Home(navHostController)
         }
         composable(route=Screen.Search.route){
-            Search(navHostController,searchViewModel)
+            Search(navHostController)
         }
         composable(route=Screen.Downloads.route){
-            Downloads(navHostController,downloadsViewModel)
+            Downloads(navHostController)
         }
         composable(route=Screen.Profile.route){
-            Profile(navHostController,profileViewModel)
+            Profile(navHostController)
         }
 
     }

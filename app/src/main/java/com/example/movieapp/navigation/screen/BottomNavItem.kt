@@ -3,6 +3,7 @@ package com.example.movieapp.navigation.screen
 import android.content.Context
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.ArrowDropDown
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
@@ -30,16 +31,16 @@ sealed class BottomNavItem(
         contentDescription =context.getString(R.string.search),
         context =context)
     class Downloads(context: Context):BottomNavItem(Screen.Downloads.route,
-        Icons.Outlined.AccountCircle,
+        Icons.Outlined.ArrowDropDown,
         context.getString(R.string.downloads),
         onclick = {},
         context.getString(R.string.downloads),
         context)
-    class Profile(context: Context):BottomNavItem(Screen.Profile.route,
-        Icons.Outlined.AccountCircle,
-        context.getString(R.string.profile),
+    class Settings(context: Context):BottomNavItem(Screen.Profile.route,
+        Icons.Outlined.Settings,
+        context.getString(R.string.settings),
         onclick = {},
-        context.getString(R.string.profile),
+        context.getString(R.string.settings),
         context)
 
 

@@ -14,7 +14,7 @@ data class Movies(
     @SerializedName("total_results")
     val totalResults: Int
 )
-fun Movies.toDomainMovies(results: List<Result>): ArrayList<Movie> {
+fun Movies.toDomainMovies(): ArrayList<Movie> {
     val movies = ArrayList<Movie>()
     results.forEach {movies.add(Movie(it.id,it.posterPath)) }
     return movies
