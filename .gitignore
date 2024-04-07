@@ -8,13 +8,11 @@
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
-/build
 /build/outputs/logs
 /build/outputs/logs/*.txt
 !/build/outputs/apk/debug
 /build/outputs/apk/debug/*.json
 !/build/outputs/apk/debug/*.apk
-*
 .externalNativeBuild
 .cxx
 local.properties

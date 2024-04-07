@@ -4,7 +4,11 @@
 /build/snapshot
 /build/tmp
 /build/outputs/logs
-!/build/outputs/apk/debug
-!/build/outputs/apk/debug/.*apk
+!/build/outputs/apk/debug/
+!/build/outputs/apk/debug/*.apk
+/build/kotlinToolingMetadata/
 *.jks
  /build/outputs/apk/androidTest
+/build/outputs/mapping/
+/build/outputs/sdk-dependencies/
+/src/main/java/com/example/movieapp/presentation/screen/Settings/
